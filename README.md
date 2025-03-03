@@ -2,9 +2,9 @@
 A turing-complete CPU built inside factorio using it's combinator system features a instruction set ready to use and a simple compiler
 
 # Optional Extras
-These things are required to use the cpu but you may lose some commands or details
-The text plate mdo should be installed for extra tooltips around the cpu 
-THe space age DLC also while isn't required grants you access to a larger instruction set that the cpu can use.
+These things are not required to use the cpu but you may lose some commands or details (Just the base factorio game running version 2.0 or greater is needed)
+The text plate mod should be installed for extra tooltips around the cpu 
+The space age DLC also while isn't required grants you access to a larger instruction set that the cpu can use.
 
 
 # How to use 

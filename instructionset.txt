@@ -1,0 +1,66 @@
+
+Instruction Opcodes and building the instruction set
+Basic Instructions
+A:1 = CONST Loads a predefined constant into the A register
+A:2 + O:? = MEML Loads the A register contents from the provided memory cell
+A:3 + O:? = MEMS Saves the A register contents into the provided memory cell
+A:4 = SWAP Pushes the contents of the A register into the B register then clears the A register
+A:5 + O:? = SLP Makes the Proccesor sleep for the given amount of factorio ticks
+A:6 + O:[FUNC] = CALL Jumps to the provided function label and pushes the current instruction pointer onto the call stack
+A:7 = RET Pops the call stack and set the instruction pointer to that value + 1
+A:8 = REVSWAP Pushes the contents of the B register into the A register then clears the B register
+A:9 + O:-2 = CLRD Clears the direction flag
+A:9 + O:2 = SETD Sets the direction flag
+A:9 + O:-1 = CLRU Clears the user flag
+A:9 + O:1 = SETU Sets the user flag
+
+
+Arithemtic instructions
+A:10 = MUL multiplies the A and B registers storing the result back in the A register
+A:11 = DIV divides the A and B registers storing the result back in the A register
+A:12 = MOD modular the A and B registers storing the result back in the A register
+A:13 = ADD adds the A and B registers storing the result back in the A register
+A:14 = SUB subtracts the A and B registers storing the result back in the A register
+A:15 = AND logical AND the A and B registers storing the result back in the A register
+A:16 = OR logical OR the A and B registers storing the result back in the A register
+A:17 = XOR logical XOR the A and B registers storing the result back in the A register
+A:18 = POW Takes the power of the A and B registers where A is the base and B is the expoent storing the result back in the A register
+A:19 = CNVR converts the signal in the A register to the type of the B registers storing the result back in the A register (Only works on 1 signal in the A register at a time)
+
+Jump Instructions
+A:20 + O:[LABEL] = JUMP jumps to the specified label
+A:21 + O:[LABEL] = JMPE jumps to the specified label if the equal/empty flag is set (Jump if either the A and B registers are the same or there both empty)
+A:22 + O:[LABEL] = JMPG jumps to the specified label if the greater than flag is set (Jump if the contents of the A register are greater than that of the B register)
+A:23 + O:[LABEL] = JMPL jumps to the specified label if the less than flag is set (Jump if the contents of the A register are less than that of the B register)
+A:24 + O:[LABEL] = JMPB jumps to the specified label if the B flag is set (Jump if theres values in the B register)
+A:25 + O:[LABEL] = JMPU jumps to the specified label if the user flag is set 
+A:26 + O:[LABEL] = JMPD jumps to the specified label if the direction flag is set
+A:27 + O:[LABEL] = JMPQ jumps to the specified label if the quality flag is set (Jump if theres items higher than the defualt quality in the A register)
+A:28 + O:[LABEL] = JMPO jumps to the specified label if the object flag is set  
+
+Advanced memory instructions
+A:30 = ARRL Loads a value(s) from the array of types specified in the A register setting their stored values in the A register
+A:31 = ARRS Saves a value(s) from the array of types specified in the A register storing their new values inside array memory
+A:32 = ARRC Clears the array 
+A:33 = ITSET sets the iterator object to the values in the A register
+A:34 = ITNEXT sets the A register to the next value in the iterator object 
+
+Networking and Display instructions
+A:40 + O:? = PORTR Loads a value from the provided port into the A register 
+A:41 + O:? = PORTS Pulses a value from the A register into the provided port
+A:42 = ROBOC Moves the contents of the connected logistical network to the A register
+A:43 = ROBOR Moves the requests of the connected logistical network to the A register
+A:44 = NETS Sends a request to the A register returning the result back to the A register
+A:45 = NETR allows requests to the B register type returning what was held in the A register
+A:46 = DRAW draws a signal to the screen from the A register requires X and Y signals to be in the A register for the given pixel to write too the signal to be drawn must be greater than 10
+A:47 = CLRSCR clears the screen requires at least 2 seconds to complete
+
+Quality and Advanced data processing instructions
+A:50 = HIGH filters out the A register to only the signal with the highest value
+A:51 = LOW filters out the A register to only the signal with the lowest value
+A:52 = COUNT counts the number of signals in the A register the returned signal is of the type in the B register
+A:53 = RAND filters out all signals in the A register except 1 random signal
+A:54 = STACK sets the values of the signals in the A register to their stack size
+A:55 = ROCKET sets the values of the signals in the A register to their rocket capacity
+A:56 + O:[QUALITY] = QSET sets the quality of the signals in the A register to the specified quality
+A:57 + O:[QUALITY] = QFILTER filters out all signals in the A register except for those with the specified quality
